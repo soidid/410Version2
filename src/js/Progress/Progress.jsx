@@ -104,8 +104,9 @@ var Progress = React.createClass({
                              <img src={imgURL}
                                   className="Progress-avatarImg"/>
                              <div className="Progress-avatarName">{stage.proposer}</div>
-                          </a>
+                          
                           {summary}
+                          </a>
                       </span>    
                     )
                 }) : "";

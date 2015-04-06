@@ -433,8 +433,11 @@
 	font-size: 12px;
 }
 .Progress-link, .Progress-link:visited {
-    color: rgb(53,55,54);
+    color: black;
     text-decoration: none;
+}
+.Progress-versionItem:hover {
+    border-color: rgb(152, 39,45);
 }
 .Progress-versionItem {
     display: block;
