@@ -251,6 +251,7 @@
 @media all and (min-width: 600px){
     .Progress-issue.is-focused {
     	border-left: 5px solid rgb(139, 0, 19);
+        background: rgb(247,227,214);
     }
 }
 .Progress-issueLeft {
@@ -351,7 +352,47 @@
 .Progress-link, .Progress-link:visited {
     color: rgb(53,55,54);
     text-decoration: none;
-    
+}
+.Progress-versionItem {
+    display: inline-block;
+    border: 1px solid;
+    background: white;
+    border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+}
+.Progress-avatarImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.Progress-avatarName {
+    vertical-align: top;
+    display: inline-block;
+    padding-top: 12px;
+}
+@media all and (min-width: 750px){
+    .Progress-versionItem {
+        padding: 2px;
+    }
+    .Progress-avatarName {
+        margin-left: 4px;
+        padding-top: 12px;
+    }
+}
+@media all and (min-width: 800px){
+    .Progress-versionItem {
+        padding: 4px 10px;
+    }
+}
+@media all and (max-width: 400px){
+    .Progress-avatarName {
+        padding-top: 12px;
+    }
+}
+.Progress-avatarHoverInfo {
+    text-align: left;
+    font-size: 14px;
 }
 
 

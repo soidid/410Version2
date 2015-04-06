@@ -29,11 +29,20 @@ var Progress = React.createClass({
   },
 
   _onSetFocusIssue(i, event){
-    this.setState({
+    
+    if(this.state.currentIssue.index === i.index){
+      this.setState({
+        currentIssue: "",
+        clean: true
+      });
+
+    }else{
+      this.setState({
         currentIssue: i,
         clean: false
-    })
-
+      });
+    }
+    
   },
   
   render () {
@@ -76,27 +85,33 @@ var Progress = React.createClass({
 
             //// 各修法版本 //
             var proposedBillItem = (i.proposedBill) ? i.proposedBill.map((bill,bill_key)=>{
-                //console.log(bill);
-                var versions = bill.bills.map((stage, stage_index)=>{
-                    var separater = (stage_index < bill.bills.length-1) ? "、":"";
+                
+                var versions = (bill.progress === item.stage) ? bill.bills.map((stage, stage_index)=>{
+                    //var separater = (stage_index < bill.bills.length-1) ? "、":"";
+                    var imgURL = require("./images/"+stage.proposer+".png");
+                    var summary = (window.innerWidth > 600) ? <div className="Progress-avatarHoverInfo">{stage.summary}</div> : "";
                     return (
-                      <span key={stage_index}>
+                      <span key={stage_index}
+                            className="Progress-versionItem">
                           <a className="Progress-link"
                              href={stage.link} 
-                             target="_blank">{stage.proposer}版</a>
-                          {separater}
-                      </span>
-                          
+                             target="_blank">
+                             <img src={imgURL}
+                                  className="Progress-avatarImg"/>
+                             <div className="Progress-avatarName">{stage.proposer}</div>
+                          </a>
+                          {summary}
+                      </span>    
                     )
-                });
+                }) : "";
                 return (
                     <span key={bill_key}>
-                        <div>審議進度為「<b>{bill.progress}</b>」之版本：{versions}</div>
+                        {versions}
                     </span>
                  )
             }) : "";
 
-            
+            var showVersions = (isFocused && window.innerWidth > 600) ? <div>{proposedBillItem}</div> : "";
             
             var fullItem = 
             (isFocused) ? 
@@ -115,12 +130,17 @@ var Progress = React.createClass({
                 </div>
                 <div className="Progress-note">「政府回應」係整理自立法院第8屆第7會期內政委員會第6次全體委員會議中，內政部、中選會之<a className="Progress-link" href={govReportLink} target="_blank">專題報告</a>內容。</div>
             </div> : "";
+
+
             return (
               <a className={issueClasses}
                  key={k}
                  onClick={boundClick} >
                  {hintItem}
-                 <div className="Progress-issueMain">{i.title}</div>
+                 <div className="Progress-issueMain">
+                    {i.title}
+                    {showVersions}
+                 </div>
                  {fullItem}
               </a>
             );

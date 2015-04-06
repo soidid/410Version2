@@ -27,14 +27,14 @@ var App = React.createClass({
           <div className="App-block">
               {progress}
           </div>
-          <Intro/>
+          
           <div className="App-update">資料更新日期：2015年4月5日</div>   
       </div>
       
     ):
     (
       <div className="App">
-          <Intro/>
+          
           <div className="App-block">
               {progress}
           </div>
