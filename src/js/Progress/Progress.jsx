@@ -10,6 +10,7 @@ var Progress = React.createClass({
   getInitialState(){
     return {
       currentIssue: "",
+      currentHoverIndex: "",
       expanded: {},
       clean: true
     }
@@ -25,6 +26,16 @@ var Progress = React.createClass({
         expanded: expanded,
         clean: false
     });
+    
+  },
+
+  _onSetHoverIssue(i, event){
+    console.log("hover!");
+    
+      this.setState({
+        currentHoverIndex: i.index
+      });
+    
     
   },
 
@@ -73,11 +84,14 @@ var Progress = React.createClass({
             issueCount ++;
             var boundClick = (window.innerWidth > 600) ?  this._onSetFocusIssue.bind(null,i) :
             this._onToggleFocusIssue.bind(null,i);
+
+            var boundHover = this._onSetHoverIssue.bind(null,i);
             
             var isFocused = (window.innerWidth > 600) ? (i.index === this.state.currentIssue.index) : (this.state.expanded[i.index]);
             var issueClasses = classSet({
                   "Progress-issue" : true,
-                  "is-focused" : isFocused
+                  "is-focused" : isFocused,
+                  "is-hovered" : i.index === this.state.currentHoverIndex
                 });
             var hintItem = (issueCount === 2 && state.clean) ? <Hintpoint /> : "";
 
@@ -135,7 +149,8 @@ var Progress = React.createClass({
             return (
               <a className={issueClasses}
                  key={k}
-                 onClick={boundClick} >
+                 onClick={boundClick} 
+                 onMouseOver={boundHover}>
                  {hintItem}
                  <div className="Progress-issueMain">
                     {i.title}

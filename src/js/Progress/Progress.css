@@ -242,11 +242,11 @@
 		width: auto;
     }
 }
-.Progress-issue:hover {
-	
+.Progress-issue.is-hovered {
 	//background: wheat;
-	border-left: 5px solid rgb(247,227,214);
+	background: rgb(247,227,214);
 }
+
 
 @media all and (min-width: 600px){
     .Progress-issue.is-focused {
