@@ -28,7 +28,7 @@ var Progress = React.createClass({
     if(this.state.currentIssue.index === i.index){
       this.setState({
         currentIssue: "",
-        clean: true
+        clean: false
       });
 
     }else{
