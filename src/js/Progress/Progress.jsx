@@ -137,20 +137,28 @@ var Progress = React.createClass({
             </div> : "";
             
             var rowHint = (window.innerWidth > 600) ? "":i.title+" ：";
-            var issueText = (item.type === "challenge") ? rowHint+versionCount +" 個版本" : i.index+" "+i.title;
+            var issueText = (item.type === "challenge") ? rowHint+versionCount +" 個版本" : i.title;
             if(versionCount === 0  && item.type!=="row")
               issueClasses += " is-hide";
 
             var rowTitleClass = (item.type ==="row")? "Progress-issueMainTitle" : "";
+            var barChartStyle = {
+              "width" : versionCount*15 + "%"
+            }
             return (
               <a className={issueClasses}
                  key={k}
                  onClick={boundClick} 
                  onMouseOver={boundHover}>
                  {hintItem}
-                 
+                 <div className="Progress-barChart"
+                      style={barChartStyle}>
+                 </div>
                  <div className="Progress-issueMain">      
-                    <div className={rowTitleClass}>{issueText}</div>  
+                    <div className={rowTitleClass}>
+                         {issueText}
+                    </div>  
+                    
                     {showVersions}
                     {fullItem}
                  </div>

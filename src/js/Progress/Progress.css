@@ -255,7 +255,9 @@
 }*/
 .Progress-issue {
 	background: white;
+    //border: 1px solid rgb(220,220,220);
     box-shadow: 2px 2px 2px rgba(0,0,0,0.12);
+   
     display: inline-block;
     
     cursor: pointer;
@@ -264,8 +266,6 @@
     width: 100%;
     
     position: relative;
-    
-    
 }
 @media all and (min-width: 600px){
     .Progress-issue {
@@ -274,6 +274,7 @@
 }
 .Progress-issueRow {
     background: white;
+    //border: 1px solid rgb(220,220,220);
     box-shadow: 2px 2px 2px rgba(0,0,0,0.12);
     display: inline-block;
     
@@ -304,6 +305,7 @@
 }
 .Progress-issue.is-hovered {
 	background: rgb(247,227,214);
+    //border: 4px solid rgb(247,227,214);;
 }
 .Progress-issueRow.is-hovered {
     background: rgb(247,227,214);
@@ -339,11 +341,28 @@
 	flex: 1;
 	padding: 4px 2px 2px 0px;
 	//border-left: 5px solid white;
+    z-index: 10;
 }
 .Progress-issueMainTitle {
     font-weight: 700;
+    z-index: 10;
 }
 
+
+/* BAR CHART */
+.Progress-barChart {
+    background: rgba(100,100,100,1);
+
+    height: 3px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+.Progress-issue.is-focused > .Progress-barChart {
+    display: none;
+    background: red;
+}
 /*.Progress-issue.is-focused > .Progress-issueMain {
 	border-left: 5px solid rgb(139, 0, 19);
 }
