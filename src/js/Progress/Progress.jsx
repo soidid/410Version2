@@ -124,12 +124,12 @@ var Progress = React.createClass({
             (isFocused && item.type==="row") ? 
             <div className="Progress-issueFull">
                 <div className="Progress-focusItem">
-                    <div className="Progress-focusItemLeft">現行法律</div>
-                    <div className="Progress-focusItemMain">{i.currentLaw}</div>
-                </div>
-                <div className="Progress-focusItem">
                     <div className="Progress-focusItemLeft">民團訴求</div>
                     <div className="Progress-focusItemMain">{i.titleFull}</div>
+                </div>
+                <div className="Progress-focusItem">
+                    <div className="Progress-focusItemLeft">現行法律</div>
+                    <div className="Progress-focusItemMain">{i.currentLaw}</div>
                 </div>
                 <div className="Progress-focusItem">
                     <div className="Progress-focusItemLeft">政府回應</div>
